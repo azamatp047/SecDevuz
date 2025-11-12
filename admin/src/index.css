@@ -1,0 +1,10 @@
+    @import "tailwindcss";
+
+    body {
+      @apply bg-black text-white;
+    }
+
+    .jodit-ui-input__input,
+    .jodit-ui-input__input {
+      color: #ff0000 !important;
+    }
