@@ -24,7 +24,7 @@ export default function GoogleCallbackPage({ params }: { params: Promise<{ local
 
         const redirect_uri = `${process.env.NEXT_PUBLIC_DOMAIN_BASE_URL}/${locale}/auth/google`
 
-        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/auth/login/google/`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/auth/login/google/`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ code, redirect_uri }),
