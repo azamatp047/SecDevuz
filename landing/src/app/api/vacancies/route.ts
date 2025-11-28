@@ -20,19 +20,19 @@ export interface VacanciesResponse {
 export const vacancyService = {
   getAllVacancies: async (locale: string): Promise<VacanciesResponse> => {
     const langPrefix = locale && locale !== "uz" ? `/${locale}` : "";
-    const res = await api.get(`${langPrefix}/api/v1/vacancies/`);
+    const res = await api.get(`${langPrefix}/v1/vacancies/`);
     return res.data;
   },
 
   getVacancyById: async (id: number, locale: string): Promise<VacancyItem> => {
     const langPrefix = locale && locale !== "uz" ? `/${locale}` : "";
-    const res = await api.get(`${langPrefix}/api/v1/vacancies/${id}/`);
+    const res = await api.get(`${langPrefix}/v1/vacancies/${id}/`);
     return res.data;
   },
 
   applyToVacancy: async (formData: FormData) => {
     const res = await api.post(
-      "/api/v1/applications/landing/add-application/",
+      "/v1/applications/landing/add-application/",
       formData,
       { headers: { "Content-Type": "multipart/form-data" } }
     );

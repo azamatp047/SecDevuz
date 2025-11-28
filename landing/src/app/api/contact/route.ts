@@ -15,7 +15,7 @@ export const contactService = {
    * Auth bo‘lmagan user ham yuborishi mumkin.
    */
   sendContactMessage: async (data: ContactFormData): Promise<any> => {
-    const res = await api.post(`/api/v1/comments/landing/add-comment/`, data, {
+    const res = await api.post(`/v1/comments/landing/add-comment/`, data, {
       headers: {
         "Accept": "application/json",
       },

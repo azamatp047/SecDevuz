@@ -58,7 +58,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   login: async (email, password) => {
     set({ loading: true, error: null });
     try {
-      const res = await api.post("/api/v1/auth/token/", { email, password });
+      const res = await api.post("/v1/auth/token/", { email, password });
       const { access, refresh } = res.data;
 
       setLocalStorage("access", access);
@@ -95,7 +95,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   signup: async (data) => {
     set({ loading: true, error: null });
     try {
-      const res = await api.post("/api/v1/auth/signup/", data);
+      const res = await api.post("/v1/auth/signup/", data);
       const { tokens } = res.data;
 
       setLocalStorage("access", tokens.access);
@@ -135,7 +135,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
   fetchUserProfile: async () => {
     try {
-      const res = await api.get("/api/v1/auth/my-profile/");
+      const res = await api.get("/v1/auth/my-profile/");
       set({ user: res.data });
     } catch (err: any) {
       get().logout();

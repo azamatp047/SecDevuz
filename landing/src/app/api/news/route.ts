@@ -20,19 +20,19 @@ export interface BlogPostsResponse {
 export const newsService = {
   getLimitedPosts: async (locale: string, limit: number = 3): Promise<BlogPostsResponse> => {
     const langPrefix = locale && locale !== "uz" ? `/${locale}` : "";
-    const res = await api.get(`${langPrefix}/api/v1/blog/landing/blog-posts/?limit=${limit}`);
+    const res = await api.get(`${langPrefix}/v1/blog/landing/blog-posts/?limit=${limit}`);
     return res.data;
   },
 
   getAllPosts: async (locale: string): Promise<BlogPostsResponse> => {
     const langPrefix = locale && locale !== "uz" ? `/${locale}` : "";
-    const res = await api.get(`${langPrefix}/api/v1/blog/landing/blog-posts/`);
+    const res = await api.get(`${langPrefix}/v1/blog/landing/blog-posts/`);
     return res.data;
   },
 
   getPostById: async (id: number, locale: string): Promise<BlogPostItem> => {
     const langPrefix = locale && locale !== "uz" ? `/${locale}` : "";
-    const res = await api.get(`${langPrefix}/api/v1/blog/landing/blog-posts/${id}/`);
+    const res = await api.get(`${langPrefix}/v1/blog/landing/blog-posts/${id}/`);
     return res.data;
   },
 };

@@ -23,7 +23,7 @@ export interface TeamResponse {
 export const teamService = {
   getTeam: async (locale: string): Promise<TeamResponse> => {
     const langPrefix = (locale && locale !== "uz") ? `/${locale}` : "";
-    const res = await api.get(`${langPrefix}/api/v1/team/landing/team-member-list/`);
+    const res = await api.get(`${langPrefix}/v1/team/landing/team-member-list/`);
     return res.data;
   },
 };

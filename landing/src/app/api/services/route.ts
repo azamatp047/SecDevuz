@@ -26,22 +26,22 @@ export interface ServicesResponse {
 export const serviceService = {
   getLimitedServices: async (locale: string, limit: number = 3): Promise<ServicesResponse> => {
     const langPrefix = (locale && locale !== 'uz') ? `/${locale}` : '';
-    const res = await api.get(`${langPrefix}/api/v1/services/?limit=${limit}`);
+    const res = await api.get(`${langPrefix}/v1/services/?limit=${limit}`);
     return res.data;
   },
   getServiceById: async (id: number, locale: string): Promise<ServiceItem> => {
     const langPrefix = (locale && locale !== 'uz') ? `/${locale}` : '';
-    const res = await api.get(`${langPrefix}/api/v1/services/${id}/`);
+    const res = await api.get(`${langPrefix}/v1/services/${id}/`);
     return res.data;
   },
   getAllServices: async (locale: string): Promise<ServicesResponse> => {
     const langPrefix = (locale && locale !== 'uz') ? `/${locale}` : '';
-    const res = await api.get(`${langPrefix}/api/v1/services/`);
+    const res = await api.get(`${langPrefix}/v1/services/`);
     return res.data;
   },
   applyForService: async (payload: { service: number; note: string; phone: string }) => {
     const res = await api.post(
-      "/api/v1/services/use-services/",
+      "/v1/services/use-services/",
       payload
     );
     return res.data;

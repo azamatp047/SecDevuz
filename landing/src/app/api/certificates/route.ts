@@ -20,7 +20,7 @@ export interface CertificatesResponse {
 
 export const certificateService = {
   getCertificates: async (): Promise<CertificatesResponse> => {
-    const res = await api.get("/api/v1/certificates/");
+    const res = await api.get("/v1/certificates/");
     return res.data;
   },
 };

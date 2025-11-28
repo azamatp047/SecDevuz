@@ -42,7 +42,7 @@ export default function Login() {
         position="top-center"
         reverseOrder={false}
       />
-      <Card title="🔐 Security Developer Kirish" className="w-[380px] shadow-lg rounded-2xl">
+      <Card title="🔐 Security Developer Kirish1" className="w-[380px] shadow-lg rounded-2xl">
         <Form
           form={form}
           layout="vertical"

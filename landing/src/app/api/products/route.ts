@@ -26,22 +26,22 @@ export interface ProductsResponse {
 export const productService = {
   getLimitedProducts: async (locale: string, limit: number = 3): Promise<ProductsResponse> => {
     const langPrefix = (locale && locale !== 'uz') ? `/${locale}` : '';
-    const res = await api.get(`${langPrefix}/api/v1/products/?limit=${limit}`);
+    const res = await api.get(`${langPrefix}/v1/products/?limit=${limit}`);
     return res.data;
   },
   getProductById: async (id: number, locale: string): Promise<ProductItem> => {
     const langPrefix = (locale && locale !== 'uz') ? `/${locale}` : '';
-    const res = await api.get(`${langPrefix}/api/v1/products/${id}/`);
+    const res = await api.get(`${langPrefix}/v1/products/${id}/`);
     return res.data;
   },
   getAllProducts: async (locale: string): Promise<ProductsResponse> => {
     const langPrefix = (locale && locale !== 'uz') ? `/${locale}` : '';
-    const res = await api.get(`${langPrefix}/api/v1/products/`);
+    const res = await api.get(`${langPrefix}/v1/products/`);
     return res.data;
   },
   buyProduct: async (payload: { product: number; phone_number: string }) => {
     const res = await api.post(
-      "/api/v1/products/buy-products/",
+      "/v1/products/buy-products/",
       payload
     );
     return res.data;
