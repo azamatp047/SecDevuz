@@ -1,36 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, use } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 import { Locale } from '@/lib/i18n/config'
 
-interface LocaleTexts {
-    checking: string
-    redirecting: string
-    error: string
-}
-
-const localeTexts: Record<Locale, LocaleTexts> = {
-    uz: {
-        checking: "Google orqali tekshirilmoqda...",
-        redirecting: "Yo‘naltirilmoqda...",
-        error: "Xatolik yuz berdi. Iltimos qayta urinib ko‘ring."
-    },
-    ru: {
-        checking: "Проверка через Google...",
-        redirecting: "Перенаправление...",
-        error: "Произошла ошибка. Попробуйте снова."
-    },
-    en: {
-        checking: "Checking with Google...",
-        redirecting: "Redirecting...",
-        error: "An error occurred. Please try again."
-    }
-}
-
-export default function GoogleCallbackPage({ params }: { params: { locale: Locale } }) {
-    const { locale } = params
+export default function GoogleCallbackPage({ params }: { params: Promise<{ locale: Locale }> }) {
+    const { locale } = use(params)
     const router = useRouter()
     const query = useSearchParams()
 
@@ -70,8 +46,23 @@ export default function GoogleCallbackPage({ params }: { params: { locale: Local
             })
     }, [query, locale, router, loginGoogle])
 
-
-    const t = localeTexts[locale]
+    const t = {
+        uz: {
+            checking: "Google orqali tekshirilmoqda...",
+            redirecting: "Yo‘naltirilmoqda...",
+            error: "Xatolik yuz berdi. Iltimos qayta urinib ko‘ring."
+        },
+        ru: {
+            checking: "Проверка через Google...",
+            redirecting: "Перенаправление...",
+            error: "Произошла ошибка. Попробуйте снова."
+        },
+        en: {
+            checking: "Checking with Google...",
+            redirecting: "Redirecting...",
+            error: "An error occurred. Please try again."
+        }
+    }[locale]
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-black">
@@ -83,7 +74,6 @@ export default function GoogleCallbackPage({ params }: { params: { locale: Local
                     <span className="w-7 h-7 bg-yellow-500 rounded-full animate-bounce [animation-delay:-0.4s]"></span>
                     <span className="w-7 h-7 bg-green-500 rounded-full animate-bounce [animation-delay:-0.6s]"></span>
                 </div>
-
 
                 <p className="text-lg font-medium">
                     {status === 'loading' && t.checking}
