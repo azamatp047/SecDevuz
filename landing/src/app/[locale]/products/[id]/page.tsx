@@ -2,7 +2,6 @@ import { Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { productService, ProductItem } from "@/app/api/products/route";
 import { notFound } from "next/navigation";
-import BackButton from "@/components/buttons/BackButton";
 import AnimatedImage from "@/components/ui/AnimatedImage";
 import BuyProductForm from "@/components/products/BuyProductForm";
 
@@ -38,7 +37,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   return (
     <div className="container mx-auto px-5 pt-25 flex flex-col md:flex-row gap-10 relative">
       <div className="w-full md:w-2/3 md:mt-[-15px]">
-        <BackButton />
         <h1 className="text-xl md:text-2xl xl:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
           {title}
         </h1>

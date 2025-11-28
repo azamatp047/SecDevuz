@@ -60,21 +60,21 @@
   },
   "about": {
     "About_Us": "About Us",
-    "our_mission": "Security Developer is a leading provider of cybersecurity solutions, dedicated to protecting businesses from evolving cyber threats. Our innovative products and services are designed to safeguard your digital assets and ensure business continuity.",
+    "our_mission": "We are a professional company specializing in providing our clients with innovative, modern and reliable IT solutions. Our main goal is to enable businesses to develop through technology and increase their competitiveness.\nAn individual approach to each project, quality service and high responsibility are our main principles.",
     "history_title": "Company History",
     "history_content": "Founded in 2010, Security Developer has grown from a small startup to a trusted name in cybersecurity. Over the years, we have expanded our services and developed cutting-edge technologies to meet the changing needs of our clients. Our commitment to excellence and customer satisfaction has been the cornerstone of our success.",
-    "2010": "2010: Founded",
-    "2010_desc": "Security Developer is founded with a focus on innovative cybersecurity solutions.",
-    "2015": "2015: Expanded Services",
-    "2015_desc": "Launched new services including threat detection and incident response.",
-    "2020": "2020: Global Reach",
-    "2020_desc": "Expanded operations internationally, serving clients worldwide.",
-    "2023": "2023: Industry Recognition",
-    "2023_desc": "Received multiple awards for excellence in cybersecurity solutions.",
+    "ustuvorlik": "Our Priorities",
+    "desc1": "Secure and reliable IT infrastructure",
+    "desc2": "Highly experienced specialists",
+    "desc3": "Customized approach to client needs",
+    "desc4": "Quality, promptness, and efficiency",
+    "desc5": "Solutions based on the latest technologies",
     "team_title": "Meet Our Team",
     "team_desc": "Our team consists of experienced professionals passionate about securing the digital world. We pride ourselves on the diversity and expertise of our staff, who contribute to our company's success and client security.",
     "certificates": "Certificates & Awards",
-    "cert_desc": "We are proud to have received numerous awards and certifications recognizing our commitment to excellence and innovation in cybersecurity. These accolades reflect our dedication to providing top-tier solutions and services."
+    "cert_desc": "We are proud to have received numerous awards and certifications recognizing our commitment to excellence and innovation in cybersecurity. These accolades reflect our dedication to providing top-tier solutions and services.",
+    "metatitle": "About Us - Security Developer",
+    "metadesc": "Learn more about Security Developer, our mission, history, team, and our commitment to providing innovative cybersecurity solutions."
   },
   "services": {
     "title": "Our Services",
@@ -144,7 +144,8 @@
     "address": "Tashkent, Uzbekistan",
     "success_title": "Message Sent Successfully!",
     "success_desc": "Thank you for reaching out to us. We have received your message and will get back to you shortly.",
-    "send_another": "Send Another Message"
+    "send_another": "Send Another Message",
+    "info_before_send": "We will contact you soon! Please make sure to provide accurate contact information so we can respond to your inquiry promptly."
   },
   "products": {
     "title": "Products",
@@ -164,6 +165,12 @@
     "lastName": "Last Name",
     "phone": "Phone Number",
     "sending": "Sending...",
-    "submit": "Place Order"
+    "submit": "Place Order",
+    "metatitle": "Products - Security Developer",
+    "metadesc": "Explore our range of cybersecurity products designed to protect your digital assets."
+  },
+  "metadata": {
+    "title": "Security Developer",
+    "description": "Corporate technology company website"
   }
 }

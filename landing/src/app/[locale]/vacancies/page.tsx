@@ -12,7 +12,7 @@ export default async function VacanciesPage(props: {
   const data = await vacancyService.getAllVacancies(locale);
 
   return (
-    <section className="container mx-auto px-5 py-10 mt-15">
+    <section className="container mx-auto px-5 py-10 mt-15 min-h-screen">
       <h1 className="text-3xl font-semibold mb-2">{dict.vacancies.title}</h1>
       <p className="text-sm mb-6">{dict.vacancies.desc}</p>
 

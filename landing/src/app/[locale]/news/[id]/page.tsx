@@ -2,7 +2,6 @@ import { Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { newsService, BlogPostItem } from "@/app/api/news/route";
 import { notFound } from "next/navigation";
-import BackButton from "@/components/buttons/BackButton";
 import AnimatedImage from "@/components/ui/AnimatedImage";
 import Link from "next/link";
 
@@ -44,7 +43,6 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
     <div className="container mx-auto px-5 pt-20 grid grid-cols-1 lg:grid-cols-3 gap-10">
       {/* ===== CHAP QISM: Asosiy yangilik ===== */}
       <div className="lg:col-span-2">
-        <BackButton />
 
         <h1 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
           {post.title}

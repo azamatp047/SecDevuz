@@ -33,7 +33,7 @@ export default async function ServicesList({ locale, dict }: ServicesListProps) 
   return (
     <div className="my-10">
       <h2 className="text-3xl font-bold my-5">{dict.services.our_services}</h2>
-      <h1 className="text-3xl font-black mb-1">{dict.services.desc_home_1}</h1>
+      <h2 className="text-3xl font-black mb-1">{dict.services.desc_home_1}</h2>
       <p className="text-sm mb-6">
         {dict.services.desc_home_2}
       </p>

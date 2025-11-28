@@ -156,16 +156,8 @@ export default function SecurityHeader({ dict, locale }: SecurityHeaderProps) {
     };
   }, []);
 
-  const handleAbout = () => {
-    router.push(`/${locale}/about`);
-  };
-
-  const handleServices = () => {
-    router.push(`/${locale}/services`);
-  };
-
   return (
-    <header className="relative w-full max-h-screen  h-[67vh] md:h-[76vh] lg:h-screen overflow-hidden bg-white dark:bg-[#001236]">
+    <header className="relative w-full max-h-screen h-[67vh] md:h-[76vh] lg:h-screen overflow-hidden bg-white dark:bg-[#001236]">
       {/* Animated Background Canvas */}
       <canvas
         ref={canvasRef}
@@ -174,47 +166,16 @@ export default function SecurityHeader({ dict, locale }: SecurityHeaderProps) {
       />
 
       {/* Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 py-20">
+      <div className="relative z-10 flex flex-col items-center justify-start h-full px-4 pt-16 md:pt-24 lg:pt-32">
         {/* Main Heading */}
-        <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-center mb-2 md:mb-6 text-gray-900 dark:text-white">
+        <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-center mb-4 md:mb-6 text-gray-900 dark:text-white">
           {dict.hero.title}
         </h1>
 
         {/* Slogan */}
-        <p className="text-xl md:text-2xl lg:text-3xl text-center mb-10 md:mb-12 text-gray-700 dark:text-gray-300 max-w-3xl">
+        <p className="text-xl md:text-2xl lg:text-3xl text-center mb-6 md:mb-8 text-gray-700 dark:text-gray-300 max-w-3xl">
           {dict.hero.subtitle}
         </p>
-
-        {/* Buttons Container */}
-        <div className="flex flex-col md:flex-row gap-2 md:gap-6 items-center">
-          {/* About Company Button */}
-          <button onClick={handleAbout} className="group cursor-pointer relative px-4 py-2 md:px-8 md:py-4 text-white font-semibold text-lg rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            {/* Gradient Background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 transition-all duration-300 group-hover:scale-110"></div>
-            
-            {/* Animated Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            {/* Shimmer Effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"></div>
-            
-            <span className="relative z-10">{dict.hero.aboutCompany}</span>
-          </button>
-
-          {/* Services Button */}
-          <button onClick={handleServices} className="group cursor-pointer relative px-4 py-2 md:px-8 md:py-4 text-white font-semibold text-lg rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            {/* Gradient Background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-purple-600 to-indigo-500 transition-all duration-300 group-hover:scale-110"></div>
-            
-            {/* Animated Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 via-purple-500 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            {/* Shimmer Effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"></div>
-            
-            <span className="relative z-10">{dict.hero.ourServices}</span>
-          </button>
-        </div>
       </div>
 
       {/* Bottom Fade Effect */}

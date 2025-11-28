@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // BASE_URL ni faqat asosiy domen qilib belgilaymiz
-const BASE_URL = "https://secdevuz.pythonanywhere.com"; 
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL; 
 
 const api = axios.create({
   baseURL: BASE_URL,

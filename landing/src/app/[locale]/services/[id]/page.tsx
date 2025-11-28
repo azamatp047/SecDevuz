@@ -2,7 +2,6 @@ import { Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { serviceService, ServiceItem } from "@/app/api/services/route";
 import { notFound } from "next/navigation";
-import BackButton from "@/components/buttons/BackButton";
 import AnimatedImage from "@/components/ui/AnimatedImage";
 import ApplyServiceForm from "@/components/services/ApplyServiceForm";
 
@@ -37,7 +36,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
   return (
     <div className="container mx-auto px-5 pt-25 flex flex-col md:flex-row gap-10 relative"> {/* relative qo'shildi */}
       <div className="w-full md:w-2/3 md:mt-[-15px]">
-        <BackButton />
+        
         <h1 className="text-xl md:text-2xl xl:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
           {title}
         </h1>

@@ -9,6 +9,7 @@ interface TestimonialCardProps {
   company: string
   image: string
   text: string
+  locale: "uz" | "en" | "ru"
 }
 
 export default function TestimonialCard({
@@ -16,6 +17,7 @@ export default function TestimonialCard({
   company,
   image,
   text,
+  locale,
 }: TestimonialCardProps) {
   return (
     <motion.div
@@ -57,7 +59,7 @@ export default function TestimonialCard({
       {/* Pastda heart va “Testimonials” */}
       <div className="flex justify-center items-center gap-2 mt-4 text-gray-600">
         <Heart size={18} className="text-red-500 fill-red-500" />
-        <span className="font-medium">Testimonials</span>
+        <span className="font-medium">{locale == 'uz' && "Izoh"} {locale == 'ru' && "Oтзывы"} {locale == 'en' && "Testimonials"}</span>
       </div>
     </motion.div>
   )

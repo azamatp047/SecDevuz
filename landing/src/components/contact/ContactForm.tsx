@@ -148,6 +148,14 @@ export default function ContactForm({ dict }: { dict: any }) {
       <Button type="submit" disabled={loading} className="w-full">
         {loading ? dict.contact.sending : dict.contact.send}
       </Button>
+
+      <hr />
+      {/* OLDIN MASLAHAT MATNI */}
+      {!submitted && !error && (
+        <p className="text-md text-gray-600 dark:text-gray-300">
+          ℹ️ {dict.contact.info_before_send}
+        </p>
+      )}
     </form>
   );
 }

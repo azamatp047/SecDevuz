@@ -34,6 +34,52 @@ export default function Footer({ locale, dict }: FooterProps) {
   return (
     <footer className="relative w-full mt-10 text-gray-700 dark:text-gray-300 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-5 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+        
+
+        {/* Links */}
+        <div>
+          <h3 className="font-semibold mb-4 text-gray-800 dark:text-white">
+            {dict.hero.ourServices}
+          </h3>
+          <ul className="space-y-2">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="hover:text-[#ff4500] transition"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h3 className="font-semibold mb-4 text-gray-800 dark:text-white">
+            {dict.nav.contact}
+          </h3>
+          <ul className="space-y-3 text-sm">
+            <li className="flex items-center space-x-2">
+              <Mail className="w-4 h-4 text-[#ff4500]" />
+              <a href="mailto:info@securitydev.com" className="hover:underline">
+                info@securitydev.com
+              </a>
+            </li>
+            <li className="flex items-center space-x-2">
+              <Phone className="w-4 h-4 text-[#ff4500]" />
+              <a href="tel:+998901234567" className="hover:underline">
+                +998 (90) 123-45-67
+              </a>
+            </li>
+            <li className="flex items-center space-x-2">
+              <Globe className="w-4 h-4 text-[#ff4500]" />
+              <span>{dict.contact.address}</span>
+            </li>
+          </ul>
+        </div>
+
         {/* Logo */}
         <div className="flex flex-col space-y-4">
           <div className="relative w-14 h-14">
@@ -83,50 +129,6 @@ export default function Footer({ locale, dict }: FooterProps) {
               </motion.a>
             ))}
           </div>
-        </div>
-
-        {/* Links */}
-        <div>
-          <h3 className="font-semibold mb-4 text-gray-800 dark:text-white">
-            {dict.hero.ourServices}
-          </h3>
-          <ul className="space-y-2">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="hover:text-[#ff4500] transition"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Contact */}
-        <div>
-          <h3 className="font-semibold mb-4 text-gray-800 dark:text-white">
-            {dict.nav.contact}
-          </h3>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-center space-x-2">
-              <Mail className="w-4 h-4 text-[#ff4500]" />
-              <a href="mailto:info@securitydev.com" className="hover:underline">
-                info@securitydev.com
-              </a>
-            </li>
-            <li className="flex items-center space-x-2">
-              <Phone className="w-4 h-4 text-[#ff4500]" />
-              <a href="tel:+998901234567" className="hover:underline">
-                +998 (90) 123-45-67
-              </a>
-            </li>
-            <li className="flex items-center space-x-2">
-              <Globe className="w-4 h-4 text-[#ff4500]" />
-              <span>Tashkent, Uzbekistan</span>
-            </li>
-          </ul>
         </div>
       </div>
 

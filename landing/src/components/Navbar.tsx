@@ -33,12 +33,21 @@ export default function Navbar({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
 
+  // useTheme dan resolvedTheme ni ham olamiz (system rejimini to'g'ri ishlashi uchun)
+  const { theme, setTheme, resolvedTheme } = useTheme()
+  
   const { isAuthenticated, user, logout, loadUser } = useAuthStore()
 
   useEffect(() => {
     loadUser()
     setMounted(true)
   }, [loadUser])
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navItems = [
     { href: `/${locale}`, label: dict.nav.home },
@@ -50,23 +59,13 @@ export default function Navbar({
     { href: `/${locale}/contact`, label: dict.nav.contact },
   ]
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   const handleLogout = async () => {
     await logout()
     router.push(`/${locale}/login`)
   }
 
-
-
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
   const closeMobileMenu = () => setIsMobileMenuOpen(false)
-
-  const { theme, setTheme } = useTheme()
 
   const changeLanguage = (newLocale: Locale) => {
     const segments = pathname.split('/')
@@ -75,64 +74,50 @@ export default function Navbar({
     router.push(newPath)
   }
 
-  if (!mounted) {
-    return (
-      <div className={`p-2 ${isScrolled ? 'text-white' : 'text-gray-700'}`}>
-        <Moon className="w-4 h-4 opacity-0" />
-      </div>
-    )
-  }
+  // LOGIKANI SODDALASHTIRISH:
+  // Qachon oq rangli elementlar (logo, text) kerak?
+  // 1. Dark mode bo'lsa.
+  // 2. Yoki sahifa pastga scroll qilingan bo'lsa (chunki fon qorayadi).
+  const isDarkOrScrolled = (mounted && resolvedTheme === 'dark') || isScrolled;
+
+  // Text rangini dinamik aniqlash
+  const textColorClass = isDarkOrScrolled 
+    ? 'text-white hover:text-[#ff4500]' 
+    : 'text-gray-700 hover:text-[#ff4500]';
 
   return (
     <motion.header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
-        isScrolled ? 'backdrop-blur-md bg-gray-800/70 h-14 shadow-md' : 'backdrop-blur-3xl h-16'
+        isScrolled 
+          ? 'backdrop-blur-md bg-gray-800/90 h-14 shadow-md dark:bg-gray-900/90' 
+          : 'backdrop-blur-sm h-16 bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
     >
       <div className="container mx-auto px-4 flex items-center justify-between h-full">
-        {/* Logo */}
+        
+        {/* LOGO QISMI */}
         <Link href={`/${locale}`} className="flex items-center space-x-3">
           <div
             className={`relative transition-all duration-300 ${
-              isScrolled ? 'w-12 h-12' : 'w-14 h-14'
+              isScrolled ? 'w-10 h-10' : 'w-12 h-12'
             }`}
           >
-            {theme === 'light' ? (
-              <Image
-                src="/icon.png"
-                alt="Security Developer dark logo image"
-                fill
-                sizes="100"
-                className="object-contain"
-                priority
-              />
-            ) : (
-              <Image
-                src="/white-icon.png"
-                alt="Security Developer light logo image"
-                fill
-                sizes="100"
-                className="object-contain"
-                priority
-              />
-            )}
-            {theme === 'light' && isScrolled && (
-              <Image
-                src="/white-icon.png"
-                alt="Security Developer light logo image"
-                fill
-                sizes="100"
-                className="object-contain"
-                priority
-              />
-            )}
+            {/* Logo src logikasi: Agar dark mode yoki scroll bo'lsa oq logo, aks holda qora logo */}
+            <Image
+              src={isDarkOrScrolled ? "/white-icon.png" : "/icon.png"}
+              alt="Security Developer logo"
+              fill
+              sizes="100"
+              className="object-contain"
+              priority
+            />
           </div>
           <span
             className={`text-lg font-semibold transition-all duration-300 ${
-              isScrolled ? 'text-white text-base' : 'text'
+               isDarkOrScrolled ? 'text-white' : 'text-gray-900'
             }`}
           >
             <span className="hidden xl:inline">Security Developer</span>
@@ -140,10 +125,10 @@ export default function Navbar({
           </span>
         </Link>
 
-        {/* Right Side */}
-        <div className="flex items-center space-x-0">
-          {/* 👇 Nav-links faqat LG va undan katta ekranlarda */}
-          <nav className="hidden lg:flex items-center relative">
+        {/* RIGHT SIDE */}
+        <div className="flex items-end">
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center relative mr-4">
             {navItems.map((item) => {
               const isActive = pathname === item.href
               const itemWidth = item.label.length * 9 + 12
@@ -154,12 +139,12 @@ export default function Navbar({
                     label={item.label}
                     isActive={isActive}
                     minWidth={itemWidth}
-                    isScrolled={isScrolled}
+                    isScrolled={isDarkOrScrolled} // Rangi shu prop orqali boshqariladi
                   />
                   {isActive && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-500"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#000dff]"
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
@@ -168,17 +153,17 @@ export default function Navbar({
             })}
           </nav>
 
-          {/* Theme toggle */}
+          {/* THEME TOGGLE */}
           <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className={`p-2 cursor-pointer ${
-              isScrolled ? 'text-white hover:text-[#ff4500]' : 'text-gray-700 hover:text-[#ff4500]'
-            }`}
+            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+            className={`p-2 rounded-full transition-colors ${textColorClass}`}
+            aria-label="Toggle theme"
           >
-            {theme === 'dark' ? (
-              <Sun className="w-4 h-4 text-white hover:text-[#ff4500]" />
+            {/* Faqat mounted bo'lganda to'g'ri iconni ko'rsatamiz, ungacha bo'sh joy yoki default icon */}
+            {mounted ? (
+               resolvedTheme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />
             ) : (
-              <Moon className="w-4 h-4" />
+               <div className="w-5 h-5" /> // Loading paytida sakramasligi uchun bo'sh joy
             )}
           </button>
 
@@ -188,9 +173,7 @@ export default function Navbar({
               <Button
                 variant="ghost"
                 size="sm"
-                className={`flex items-center cursor-pointer space-x-1 ${
-                  isScrolled ? 'text-white hover:text-[#e03d00]' : ' hover:text-[#e03d00]'
-                }`}
+                className={`flex items-center cursor-pointer ${textColorClass}`}
               >
                 <Globe className="w-4 h-4" />
                 <span className="text-sm font-medium">{localeNames[locale]}</span>
@@ -210,7 +193,7 @@ export default function Navbar({
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Login / User avatar — har doim 1024px da ham ko‘rinadi */}
+          {/* User Profile / Login */}
           <div className="flex">
             {isAuthenticated ? (
               <DropdownMenu>
@@ -250,9 +233,7 @@ export default function Navbar({
                 <Button
                   variant="ghost"
                   size="sm"
-                  className={`hidden md:flex items-center cursor-pointer space-x-1 hover:text-[#ff4500] ${
-                    isScrolled ? 'text-white' : ''
-                  }`}
+                  className={`hidden md:flex items-center cursor-pointer space-x-1 ${textColorClass}`}
                 >
                   <User className="w-4 h-4" />
                   <span className="text-sm font-medium">{dict.auth.login}</span>
@@ -261,22 +242,21 @@ export default function Navbar({
             )}
           </div>
 
-          {/* Mobile menu toggle (faqat <1024px da) */}
-          <div className="flex lg:hidden items-center">
+          {/* Mobile menu toggle */}
+          <div className="flex lg:hidden items-center ml-2">
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleMobileMenu}
-              className={`p-2 hover:text-[#ff4500] ${isScrolled && 'text-white'}`}
+              className={`p-2 ${textColorClass}`}
               aria-label="Toggle mobile menu"
             >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu (nav links faqat menu ochilganda chiqadi) */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={closeMobileMenu}
@@ -288,10 +268,15 @@ export default function Navbar({
         isAuthenticated={isAuthenticated}
         user={user}
       />
-
+      
+      {/* Background overlay for scroll animation */}
       <AnimatePresence>
         {isScrolled && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
+            <motion.div 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                exit={{ opacity: 0 }} 
+            />
         )}
       </AnimatePresence>
     </motion.header>

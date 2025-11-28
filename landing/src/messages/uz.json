@@ -60,21 +60,21 @@
   },
   "about": {
     "About_Us": "Biz haqimizda",
-    "our_mission": "Security Developer — kiberxavfsizlik yechimlarini taqdim etishda yetakchi provayder bo‘lib, rivojlanayotgan kiber tahdidlardan biznesni himoya qilishga bag‘ishlangan. Bizning innovatsion mahsulotlarimiz va xizmatlarimiz sizning raqamli aktivlaringizni himoya qilish va biznes uzluksizligini ta’minlash uchun mo‘ljallangan.",
+"our_mission": "Biz-mijozlarimizga innovatsion, zamonaviy va ishonchli IT yechimlar taqdim etishga ixtisoslashgan professional kompaniyamiz. Asosiy maqsadimiz — bizneslarga texnologiya orqali rivojlanish imkonini yaratish va ularning raqobatbardoshligini oshirish. Har bir loyiha uchun individual yondashuv, sifatli xizmat va yuqori mas'uliyat bizning bosh tamoyillarimizdir.",
     "history_title": "Kompaniya tarixi",
     "history_content": "2010 yilda tashkil etilgan Security Developer kichik startapdan kiberxavfsizlik sohasida ishonchli nomga aylandi. Yillar davomida biz xizmatlarimizni kengaytirdik va mijozlarimizning o‘zgaruvchan ehtiyojlarini qondirish uchun zamonaviy texnologiyalarni ishlab chiqdik. Mukammallikka va mijozlarning qoniqishiga bo‘lgan sodiqligimiz bizning muvaffaqiyatimizning asosiy ustunidir.",
-    "2010": "2010: Tashkil etilgan",
-    "2010_desc": "Security Developer kiberxavfsizlik sohasidagi innovatsion yechimlarga e'tibor qaratgan holda tashkil etilgan.",
-    "2015": "2015: Xizmatlarni kengaytirish",
-    "2015_desc": "Tahdidlarni aniqlash va hodisalarga javob berish kabi yangi xizmatlar ishga tushirildi.",
-    "2020": "2020: Global miqyos",
-    "2020_desc": "Xalqaro miqyosda faoliyatni kengaytirish, butun dunyo bo'ylab mijozlarga xizmat ko'rsatish.",
-    "2023": "2023: Sanoat tan olishi",
-    "2023_desc": "Kiberxavfsizlik yechimlaridagi ajoyib yutuqlar uchun bir nechta mukofotlarga sazovor bo'ldi.",
+    "ustuvorlik": "Bizning ustuvorliklarimiz",
+    "desc1": "Xavfsiz va ishonchli IT infratuzilma",
+    "desc2": "Yuqori tajribali mutaxassislar",
+    "desc3": "Mijoz ehtiyojiga mos maxsus yondashuv",
+    "desc4": "Sifat, tezkorlik va samaradorlik",
+    "desc5": "Eng zamonaviy texnologiyalarga tayangan yechimlar",
     "team_title": "Jamoamiz bilan tanishing",
     "team_desc": "Bizning jamoamiz tajribali mutaxassislardan iborat bo‘lib, raqamli dunyo xavfsizligini ta’minlashga bag‘ishlangan. Xodimlarimizning turfa tajribasi va bilimlari kompaniyamiz muvaffaqiyatiga va mijozlar xavfsizligiga xizmat qiladi.",
     "certificates": "Sertifikatlar va mukofotlar",
-    "cert_desc": "Biz kiberxavfsizlik sohasidagi mukammallik va innovatsiyalar uchun ko‘plab mukofot va sertifikatlarga sazovor bo‘lganimizdan faxrlanamiz. Bu e’tiroflar bizning sifat va ishonchlilikka sodiqligimizni ifodalaydi."
+    "cert_desc": "Biz kiberxavfsizlik sohasidagi mukammallik va innovatsiyalar uchun ko‘plab mukofot va sertifikatlarga sazovor bo‘lganimizdan faxrlanamiz. Bu e’tiroflar bizning sifat va ishonchlilikka sodiqligimizni ifodalaydi.",
+    "metatitle": "Biz haqimizda - Security Developer",  
+    "metadesc": "Security Developer haqida ko‘proq ma’lumot oling, bizning missiyamiz, tariximiz, jamoamiz va innovatsion kiberxavfsizlik yechimlarini taqdim etishga bo‘lgan sodiqligimiz."
   },
   "services": {
     "title": "Bizning xizmatlarimiz",
@@ -145,7 +145,8 @@
     "address": "Toshkent, O‘zbekiston",
     "success_title": "Xabar muvaffaqiyatli yuborildi!",
     "success_desc": "Biz bilan bog‘langaningiz uchun tashakkur. Xabaringizni qabul qildik va tez orada siz bilan bog‘lanamiz.",
-    "send_another": "Yana bir xabar yuboring"
+    "send_another": "Yana bir xabar yuboring",
+    "info_before_send": "Biz siz bilan tez orada bog'lanamiz! Iltimos, so‘rovingizga tezda javob berishimiz uchun aniq aloqa ma’lumotlarini taqdim etganingizga ishonch hosil qiling."
   },
   "products": {
     "title": "Mahsulotlar",
@@ -165,6 +166,12 @@
     "lastName": "Familiya",
     "phone": "Telefon raqami",
     "sending": "Yuborilmoqda...",
-    "submit": "Buyurtma berish"
+    "submit": "Buyurtma berish",
+    "metatitle": "Mahsulotlar - Security Developer",
+    "metadesc": "Raqamli aktivlaringizni himoya qilish uchun mo‘ljallangan kiberxavfsizlik mahsulotlarimiz assortimenti bilan tanishing."
+  },
+  "metadata": {
+    "title": "Security Developer",
+    "description": "Korporativ texnologiya kompaniyasining veb-sayti"
   }
 }

@@ -26,6 +26,7 @@ export default function TestimonialsSection({ locale }: TestimonialsSectionProps
             company={item.company}
             image={item.image}
             text={item.text}
+            locale={locale}
           />
         ))}
       </div>
