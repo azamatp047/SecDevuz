@@ -9,9 +9,9 @@ export const dynamic = 'force-dynamic';
 export default async function ContactPage({
   params,
 }: {
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>; // Changed to Promise
 }) {
-  const { locale } = await params;
+  const { locale } = await params; // Added await
   const dict = await getDictionary(locale);
 
   return (
