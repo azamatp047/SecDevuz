@@ -34,11 +34,14 @@ export const serviceService = {
     const res = await api.get(`${langPrefix}/v1/services/${id}/`);
     return res.data;
   },
-  getAllServices: async (locale: string): Promise<ServicesResponse> => {
-    const langPrefix = (locale && locale !== 'uz') ? `/${locale}` : '';
-    const res = await api.get(`${langPrefix}/v1/services/`);
+  getAllServices: async (locale: string, page: number = 1, limit: number = 6): Promise<ServicesResponse> => {
+    const langPrefix = (locale && locale !== "uz") ? `/${locale}` : "";
+    const res = await api.get(
+      `${langPrefix}/v1/services/?limit=${limit}&offset=${(page - 1) * limit}`
+    );
     return res.data;
   },
+
   applyForService: async (payload: { service: number; note: string; phone: string }) => {
     const res = await api.post(
       "/v1/services/use-services/",

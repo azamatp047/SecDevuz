@@ -99,7 +99,9 @@
     "lastName": "Last Name",
     "phone": "Phone Number",
     "email": "Email",
-    "note": "Additional Notes"
+    "note": "Additional Notes",
+    "prev": "Previous",
+    "next": "Next"
   },
   "vacancies": {
     "title": "Current Vacancies",
@@ -172,5 +174,11 @@
   "metadata": {
     "title": "Security Developer",
     "description": "Corporate technology company website"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalid_email": "Please enter a valid email address",
+    "password_min": "Password must be at least 6 characters",
+    "password_mismatch": "Passwords do not match"
   }
 }

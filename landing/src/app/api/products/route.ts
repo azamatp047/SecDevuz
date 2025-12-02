@@ -34,11 +34,18 @@ export const productService = {
     const res = await api.get(`${langPrefix}/v1/products/${id}/`);
     return res.data;
   },
-  getAllProducts: async (locale: string): Promise<ProductsResponse> => {
-    const langPrefix = (locale && locale !== 'uz') ? `/${locale}` : '';
-    const res = await api.get(`${langPrefix}/v1/products/`);
+  getAllProducts: async (
+    locale: string,
+    page: number = 1,
+    limit: number = 6
+  ): Promise<ProductsResponse> => {
+    const langPrefix = locale !== "uz" ? `/${locale}` : "";
+    const offset = (page - 1) * limit;
+
+    const res = await api.get(`${langPrefix}/v1/products/?limit=${limit}&offset=${offset}`);
     return res.data;
   },
+
   buyProduct: async (payload: { product: number; phone_number: string }) => {
     const res = await api.post(
       "/v1/products/buy-products/",

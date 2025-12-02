@@ -4,13 +4,19 @@ import { getDictionary } from "@/lib/i18n/dictionaries"; // Lug'atni olish uchun
 import { serviceService } from "@/app/api/services/route";
 import ServiceClient from "@/components/services/ServiceClient";
 
-export default async function ServicesPage(props: {
-  params: { locale: Locale };
-}) {
-  // Await props.params before destructuring
-  const { locale } = await props.params; // <-- FIX IS HERE
-  const dict = await getDictionary(locale); // Tilga mos lug'atni yuklab olamiz
-  const data = await serviceService.getAllServices(locale); // Barcha xizmatlarni yuklab olamiz
+export default async function ServicesPage(props: { params: { locale: Locale } }) {
+  const { locale } = await props.params;
 
-  return <ServiceClient locale={locale} dict={dict} services={data.results} />;
+  const dict = await getDictionary(locale);
+  const data = await serviceService.getAllServices(locale, 1, 6);
+
+  return (
+    <ServiceClient
+      locale={locale}
+      dict={dict}
+      initialServices={data.results}
+      initialNext={data.next}
+      initialPrev={data.previous}
+    />
+  );
 }

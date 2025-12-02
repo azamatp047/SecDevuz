@@ -60,7 +60,7 @@
   },
   "about": {
     "About_Us": "Biz haqimizda",
-"our_mission": "Biz-mijozlarimizga innovatsion, zamonaviy va ishonchli IT yechimlar taqdim etishga ixtisoslashgan professional kompaniyamiz. Asosiy maqsadimiz — bizneslarga texnologiya orqali rivojlanish imkonini yaratish va ularning raqobatbardoshligini oshirish. Har bir loyiha uchun individual yondashuv, sifatli xizmat va yuqori mas'uliyat bizning bosh tamoyillarimizdir.",
+    "our_mission": "Biz-mijozlarimizga innovatsion, zamonaviy va ishonchli IT yechimlar taqdim etishga ixtisoslashgan professional kompaniyamiz. Asosiy maqsadimiz — bizneslarga texnologiya orqali rivojlanish imkonini yaratish va ularning raqobatbardoshligini oshirish. Har bir loyiha uchun individual yondashuv, sifatli xizmat va yuqori mas'uliyat bizning bosh tamoyillarimizdir.",
     "history_title": "Kompaniya tarixi",
     "history_content": "2010 yilda tashkil etilgan Security Developer kichik startapdan kiberxavfsizlik sohasida ishonchli nomga aylandi. Yillar davomida biz xizmatlarimizni kengaytirdik va mijozlarimizning o‘zgaruvchan ehtiyojlarini qondirish uchun zamonaviy texnologiyalarni ishlab chiqdik. Mukammallikka va mijozlarning qoniqishiga bo‘lgan sodiqligimiz bizning muvaffaqiyatimizning asosiy ustunidir.",
     "ustuvorlik": "Bizning ustuvorliklarimiz",
@@ -73,7 +73,7 @@
     "team_desc": "Bizning jamoamiz tajribali mutaxassislardan iborat bo‘lib, raqamli dunyo xavfsizligini ta’minlashga bag‘ishlangan. Xodimlarimizning turfa tajribasi va bilimlari kompaniyamiz muvaffaqiyatiga va mijozlar xavfsizligiga xizmat qiladi.",
     "certificates": "Sertifikatlar va mukofotlar",
     "cert_desc": "Biz kiberxavfsizlik sohasidagi mukammallik va innovatsiyalar uchun ko‘plab mukofot va sertifikatlarga sazovor bo‘lganimizdan faxrlanamiz. Bu e’tiroflar bizning sifat va ishonchlilikka sodiqligimizni ifodalaydi.",
-    "metatitle": "Biz haqimizda - Security Developer",  
+    "metatitle": "Biz haqimizda - Security Developer",
     "metadesc": "Security Developer haqida ko‘proq ma’lumot oling, bizning missiyamiz, tariximiz, jamoamiz va innovatsion kiberxavfsizlik yechimlarini taqdim etishga bo‘lgan sodiqligimiz."
   },
   "services": {
@@ -100,7 +100,9 @@
     "sending": "Yuborilmoqda...",
     "phone": "Telefon raqami",
     "email": "Elektron pochta",
-    "note": "Qo‘shimcha eslatmalar"
+    "note": "Qo‘shimcha eslatmalar",
+    "prev": "Oldingi",
+    "next": "Keyingi"
   },
   "vacancies": {
     "title": "Bo‘sh ish o‘rinlari",
@@ -173,5 +175,11 @@
   "metadata": {
     "title": "Security Developer",
     "description": "Korporativ texnologiya kompaniyasining veb-sayti"
+  },
+  "validation": {
+    "required": "Ushbu maydon to‘ldirilishi shart",
+    "invalid_email": "Iltimos, to‘g‘ri email manzil kiriting",
+    "password_min": "Parol kamida 6 belgidan iborat bo‘lishi kerak",
+    "password_mismatch": "Parollar mos kelmadi"
   }
 }
