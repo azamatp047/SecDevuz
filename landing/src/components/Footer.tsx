@@ -63,14 +63,14 @@ export default function Footer({ locale, dict }: FooterProps) {
           <ul className="space-y-3 text-sm">
             <li className="flex items-center space-x-2">
               <Mail className="w-4 h-4 text-[#ff4500]" />
-              <a href="mailto:info@securitydev.com" className="hover:underline">
-                info@securitydev.com
+              <a href="mailto:secdevuz2025@gmail.com" className="hover:underline">
+                secdevuz2025@gmail.com
               </a>
             </li>
             <li className="flex items-center space-x-2">
               <Phone className="w-4 h-4 text-[#ff4500]" />
-              <a href="tel:+998901234567" className="hover:underline">
-                +998 (90) 123-45-67
+              <a href="tel:++998508898770" className="hover:underline">
+                +998 (50) 889 87 70
               </a>
             </li>
             <li className="flex items-center space-x-2">
@@ -134,7 +134,7 @@ export default function Footer({ locale, dict }: FooterProps) {
 
       <div className="border-t border-gray-200 dark:border-gray-800 py-4 text-center text-sm">
         <p className="text-gray-600 dark:text-gray-400">
-          © {new Date().getFullYear()} <span className="font-semibold text-[#ff4500]">Security Developer</span>. {locale === 'uz' ? 'Barcha huquqlar himoyalangan.' : 'All rights reserved.'}
+          © {new Date().getFullYear()} <span className="font-semibold text-[#ff4500]">Security Developer</span>. {dict.common.reserved}
         </p>
       </div>
     </footer>

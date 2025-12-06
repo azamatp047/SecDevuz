@@ -157,29 +157,33 @@ export default function SecurityHeader({ dict, locale }: SecurityHeaderProps) {
   }, []);
 
   return (
-    <header className="relative w-full max-h-screen h-[67vh] md:h-[76vh] lg:h-screen overflow-hidden bg-white dark:bg-[#001236]">
-      {/* Animated Background Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        style={{ zIndex: 0 }}
-      />
+  <header className="relative w-full h-[76vh] overflow-hidden bg-white dark:bg-[#001236]">
+    {/* Animated Background Canvas */}
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full"
+      style={{ zIndex: 0 }}
+    />
 
-      {/* Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-start h-full px-4 pt-16 md:pt-24 lg:pt-32">
-        {/* Main Heading */}
-        <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold text-center mb-4 md:mb-6 text-gray-900 dark:text-white">
-          {dict.hero.title}
-        </h1>
+    {/* Content Container */}
+    <div className="
+      relative z-10 flex flex-col items-center justify-center 
+      h-full px-4 text-center
+    ">
+      {/* Main Heading */}
+      <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-gray-900 dark:text-white mb-4">
+        {dict.hero.title}
+      </h1>
 
-        {/* Slogan */}
-        <p className="text-xl md:text-2xl lg:text-3xl text-center mb-6 md:mb-8 text-gray-700 dark:text-gray-300 max-w-3xl">
-          {dict.hero.subtitle}
-        </p>
-      </div>
+      {/* Slogan */}
+      <p className="text-lg md:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 max-w-2xl">
+        {dict.hero.subtitle}
+      </p>
+    </div>
 
-      {/* Bottom Fade Effect */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 dark:h-20 bg-gradient-to-t from-white dark:from-indigo-950 to-transparent pointer-events-none"></div>
-    </header>
-  );
+    {/* Bottom Fade Effect */}
+    <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-white dark:from-indigo-950 to-transparent pointer-events-none"></div>
+  </header>
+);
+
 }

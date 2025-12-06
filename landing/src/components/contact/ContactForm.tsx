@@ -7,6 +7,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useAuthStore } from "@/store/authStore"; // Assuming this is a client-side Zustand store
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+
 
 export default function ContactForm({ dict }: { dict: any }) {
   const { user } = useAuthStore(); // Accessing the client-side auth store
@@ -58,7 +61,7 @@ export default function ContactForm({ dict }: { dict: any }) {
         try {
           const data = await res.json();
           if (data?.error) message = data.error;
-          else if (data?.message) message = data.message;
+          else if (data?.message) message = `${dict.errors.form_submission}, ${data.message}`;
         } catch {
           // ignore JSON parse errors
         }
@@ -119,13 +122,36 @@ export default function ContactForm({ dict }: { dict: any }) {
       </div>
       <div className="space-y-2">
         <Label>{dict.contact.phone} *</Label>
-        <Input
-          name="phone"
+        <PhoneInput
+          country="uz"
           value={formData.phone}
-          onChange={handleChange}
-          disabled={!!user && !!user.phone} // Disabled if user data is pre-filled
-          aria-label={dict.contact.phone}
+          onChange={(value) => setFormData((prev) => ({ ...prev, phone: value }))}
+          disabled={!!user?.phone}
+          containerStyle={{ width: "100%" }}
+          inputStyle={{
+            width: "100%",
+            height: "42px",
+            borderRadius: "8px",
+            border: "1px solid var(--input-border, #E5E7EB)",
+            backgroundColor: "var(--input-bg)",
+            color: "var(--input-text)",
+            fontSize: "14px",
+            paddingLeft: "48px",
+          }}
+          buttonStyle={{
+            backgroundColor: "var(--input-bg)",
+            border: "1px solid var(--input-border, #E5E7EB)",
+            borderRadius: "8px 0 0 8px",
+          }}
+          dropdownStyle={{
+            backgroundColor: "var(--input-bg)",
+            color: "var(--input-text)",
+            borderRadius: "8px",
+          }}
         />
+
+
+
       </div>
       <div className="space-y-2">
         <Label>{dict.contact.message} *</Label>

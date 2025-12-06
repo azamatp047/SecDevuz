@@ -88,6 +88,10 @@
     --sidebar-accent-foreground: oklch(0.21 0.034 264.665);
     --sidebar-border: oklch(0.928 0.006 264.531);
     --sidebar-ring: oklch(0.707 0.022 261.325);
+    --input-bg: #ffffff;
+    --input-text: #000000;
+    --input-border: #E5E7EB;
+    /* shadcn input border */
 }
 
 .dark {
@@ -122,6 +126,9 @@
     --sidebar-accent-foreground: oklch(0.985 0.002 247.839);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.551 0.027 264.364);
+    --input-bg: #1C1C1C;
+    --input-text: #0011ff;
+    --input-border: #3F3F46;
 }
 
 @layer base {
@@ -156,21 +163,21 @@
 
 /* globals.css ga qo'shing */
 [data-radix-popper-content-wrapper] {
-  z-index: 9999 !important;
+    z-index: 9999 !important;
 }
 
 .DialogOverlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
 }
 
 .DialogContent {
-  background-color: white;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
 }

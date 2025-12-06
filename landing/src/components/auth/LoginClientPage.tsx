@@ -21,7 +21,24 @@ interface LoginClientPageProps {
 }
 
 export default function LoginClientPage({ dict, locale }: LoginClientPageProps) {
-  const { login, isAuthenticated, loading, error } = useAuthStore()
+  const [stetateError, setStateError] = useState(null);
+  const { login, isAuthenticated, loading, error, clearError } = useAuthStore()
+
+  useEffect(() => {
+  clearError()
+}, [])
+
+
+  useEffect(() => {
+    if (!error) return;
+
+    if (error === "No active account found with the given credentials") {
+      setStateError(dict.errors.auth_failed);
+    } else {
+      setStateError(dict.errors.unknown_error);
+    }
+  }, [error, dict.errors]);
+
 
   const router = useRouter()
 
@@ -64,7 +81,7 @@ export default function LoginClientPage({ dict, locale }: LoginClientPageProps) 
   return (
     <div className="flex justify-center items-center min-h-screen pt-[64px] px-4 bg-gradient-to-b from-gray-50 to-gray-200 dark:from-gray-900 dark:to-black py-10">
       <Card className="w-full max-w-sm shadow-lg border border-gray-300 dark:border-gray-700">
-        
+
         {/* HEADER */}
         <CardHeader>
           <CardTitle className="text-center text-2xl font-semibold">
@@ -126,7 +143,7 @@ export default function LoginClientPage({ dict, locale }: LoginClientPageProps) 
             </Button>
 
             {/* ERROR */}
-            {error && <p className="text-red-500 text-center text-sm">{error}</p>}
+            {error && <p className="text-red-500 text-center text-sm">{stetateError}</p>}
           </form>
 
           <Separator className="my-4" />

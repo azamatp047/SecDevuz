@@ -24,7 +24,7 @@ export default async function ContactPage({
         {/* Left side form */}
         <Suspense fallback={
           <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl text-center">
-            <p>Loading contact form...</p>
+            <p>{dict.common.loading}</p>
           </div>
         }>
           <ContactFormWrapper dict={dict} />
@@ -39,13 +39,15 @@ export default async function ContactPage({
           />
           <div className="mt-6 text-center space-y-1">
             <p className="font-semibold text-lg">{dict.contact.secdev}</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground max-w-[360px] mx-auto">
               {dict.contact.address}
             </p>
             <p className="text-sm text-muted-foreground">
-              📧 securitydeveloper@mail.com
+              📧 <a href="mailto:secdevuz2025@gmail.com" className="hover:underline">secdevuz2025@gmail.com</a>
             </p>
-            <p className="text-sm text-muted-foreground">📞 93 130 50 77</p>
+            <p className="text-sm text-muted-foreground">
+              📞 <a href="tel:+998508898770" className="hover:underline">+998 (50) 889 87 70</a>
+            </p>
           </div>
         </div>
       </div>

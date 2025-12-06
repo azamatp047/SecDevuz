@@ -13,7 +13,9 @@
     "loading": "Yuklanmoqda...",
     "error": "Xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring.",
     "submit": "Yuborish",
-    "cancel": "Bekor qilish"
+    "reload": "Qayta yuklash",
+    "cancel": "Bekor qilish",
+    "reserved": "Barcha huquqlar himoyalangan."
   },
   "hero": {
     "title": "Security Developer",
@@ -109,7 +111,7 @@
     "desc": "Jamoamizga qo‘shiling va xavfsiz raqamli kelajakni birgalikda yarataylik. Quyidagi bo‘sh ish o‘rinlarini ko‘rib chiqing va sizga mos lavozimni toping.",
     "search_placeholder": "Ish o‘rinlarini qidirish...",
     "no_vacancies": "Bo‘sh ish o‘rinlari topilmadi. 😢",
-    "apply_btn": "Ariza topshirish",
+    "apply_btn": "To'liq ko'rish",
     "deadline": "Ariza topshirish muddati",
     "needAuth": "Ariza topshirish uchun tizimga kirish kerak.",
     "needAuthDesc": "Iltimos, ariza topshirish uchun tizimga kiring yoki ro‘yxatdan o‘ting.",
@@ -144,7 +146,7 @@
     "requiredField": "Bu maydon majburiy.",
     "invalidEmail": "Iltimos, to‘g‘ri elektron pochta manzilini kiriting.",
     "secdev": "Security Developer",
-    "address": "Toshkent, O‘zbekiston",
+    "address": "TOSHKENT SHAHRI, SHAYXONTOXUR TUMANI SHODLIK MFY, IBN SINO 2 MAVZESI, 18-UY",
     "success_title": "Xabar muvaffaqiyatli yuborildi!",
     "success_desc": "Biz bilan bog‘langaningiz uchun tashakkur. Xabaringizni qabul qildik va tez orada siz bilan bog‘lanamiz.",
     "send_another": "Yana bir xabar yuboring",
@@ -181,5 +183,20 @@
     "invalid_email": "Iltimos, to‘g‘ri email manzil kiriting",
     "password_min": "Parol kamida 6 belgidan iborat bo‘lishi kerak",
     "password_mismatch": "Parollar mos kelmadi"
+  },
+  "errors": {
+    "error500": "Serverda ichki xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring.",
+    "error404": "Sahifa topilmadi. Iltimos, URL manzilini tekshiring yoki bosh sahifaga qayting.",
+    "services_fetch": "Xizmatlarni olishda xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring.",
+    "news_fetch": "Yangiliklarni olishda xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring.",
+    "products_fetch": "Mahsulotlarni olishda xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring.",
+    "vacancies_fetch": "Bo‘sh ish o‘rinlarini olishda xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring.",
+    "team_fetch": "Jamoa ma'lumotlarini olishda xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring.",
+    "certificates_fetch": "Sertifikatlarni olishda xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring.",
+    "auth_failed": "Avtorizatsiya muvaffaqiyatsiz tugadi. Iltimos, ma'lumotlaringizni tekshiring va qayta urinib ko‘ring.",
+    "network_error": "Tarmoq xatosi. Iltimos, internet ulanishingizni tekshiring va qayta urinib ko‘ring.",
+    "email_exists": "Bu elektron pochta manzili allaqachon ro‘yxatdan o‘tgan.",
+    "unknown_error": "Noma'lum xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring.",
+    "form_submission": "Forma yuborishda xatolik yuz berdi. Iltimos, keyinroq qayta urinib ko‘ring."
   }
 }

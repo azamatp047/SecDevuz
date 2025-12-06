@@ -31,11 +31,7 @@ export const vacancyService = {
   },
 
   applyToVacancy: async (formData: FormData) => {
-    const res = await api.post(
-      "/v1/applications/landing/add-application/",
-      formData,
-      { headers: { "Content-Type": "multipart/form-data" } }
-    );
+    const res = await api.post( "/v1/applications/landing/add-application/", formData );
     return res.data;
   },
 };

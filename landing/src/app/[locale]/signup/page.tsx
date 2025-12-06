@@ -18,7 +18,7 @@ export default async function SignupPage({ params }: SignupPageProps) {
   return (
     <Suspense fallback={
       <div className="flex justify-center items-center min-h-screen">
-        <div className="text-center">Loading...</div>
+        <div className="text-center">{dict.common.loading}</div>
       </div>
     }>
       <RegisterClientPage dict={dict} locale={locale} />

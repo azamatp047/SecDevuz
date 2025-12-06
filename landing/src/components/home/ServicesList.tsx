@@ -24,9 +24,9 @@ export default async function ServicesList({ locale, dict }: ServicesListProps) 
   } catch (error: any) {
     console.error("Xizmatlarni yuklashda xatolik:", error);
     if (error.response && error.response.status === 404) {
-      errorFetchingServices = "Xizmatlar topilmadi. Iltimos, URL manzilini tekshiring.";
+      errorFetchingServices = dict.errors.error404;
     } else {
-      errorFetchingServices = error.message || "Xizmatlarni yuklashda xatolik yuz berdi.";
+      errorFetchingServices = error.message || " ";
     }
   }
 

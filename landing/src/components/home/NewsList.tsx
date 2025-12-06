@@ -18,7 +18,7 @@ export default async function NewsList({ locale, dict }: NewsListProps) {
     posts = response.results;
   } catch (error: any) {
     console.error("News yuklashda xatolik:", error);
-    errorFetchingNews = "Yangiliklarni yuklashda xatolik yuz berdi.";
+    errorFetchingNews = dict.errors.news_fetch;
   }
 
   return (

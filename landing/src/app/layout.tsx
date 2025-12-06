@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css"; // Agar sizda global css bo'lsa
+import "./globals.css";
 
-// Fontni sozlash (agar sizda default font bo'lsa)
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: "Security Developer",
@@ -16,12 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // html ga suppressHydrationWarning qo'shilgan
-    <html lang="en" suppressHydrationWarning>
-      <body 
-        className={inter.className} 
-        suppressHydrationWarning={true} // <-- MUHIM: Bu yerni ham qo'shing
-      >
+    <html suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
         {children}
       </body>
     </html>

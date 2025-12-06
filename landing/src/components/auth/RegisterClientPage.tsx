@@ -21,7 +21,31 @@ interface RegisterClientPageProps {
 }
 
 export default function RegisterClientPage({ dict, locale }: RegisterClientPageProps) {
-  const { signup, isAuthenticated, loading, error } = useAuthStore()
+  const { signup, isAuthenticated, loading, error, clearError } = useAuthStore()
+  const [stateError, setStateError] = useState<string | null>(null);
+
+  useEffect(() => {
+    clearError()
+  }, [])
+
+
+  // ❗ error o'zgarganda aktuallashtiramiz
+  useEffect(() => {
+    if (!error) {
+      setStateError(null);
+      return;
+    }
+
+    if (error === "No active account found with the given credentials") {
+      setStateError(dict.errors.auth_failed);
+    } else if (error === "\"Email manzili\" foydalanuvchi allaqachon mavjud.") {
+      setStateError(dict.errors.email_exists);
+    }
+    else {
+      setStateError(dict.errors.unknown_error);
+    }
+  }, [error]);
+
   const router = useRouter()
 
   const client_id = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!
@@ -209,7 +233,7 @@ export default function RegisterClientPage({ dict, locale }: RegisterClientPageP
               {dict.auth.register}
             </Button>
 
-            {error && <p className="text-red-500 text-center text-sm">{error}</p>}
+            {error && <p className="text-red-500 text-center text-sm">{stateError}</p>}
           </form>
 
           <Separator className="my-4" />

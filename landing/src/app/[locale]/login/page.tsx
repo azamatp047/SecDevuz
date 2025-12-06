@@ -18,7 +18,7 @@ export default async function LoginPage({ params }: LoginPageProps) {
   return (
     <Suspense fallback={
       <div className="flex justify-center items-center min-h-screen">
-        <div className="text-center">Loading...</div>
+        <div className="text-center">{dict.common.loading}</div>
       </div>
     }>
       <LoginClientPage dict={dict} locale={locale} />

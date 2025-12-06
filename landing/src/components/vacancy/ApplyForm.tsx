@@ -7,6 +7,8 @@ import { vacancyService } from "@/app/api/vacancies/route";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import Image from "next/image";
 
 export default function ApplyForm({
@@ -19,58 +21,46 @@ export default function ApplyForm({
   locale: string;
 }) {
   const router = useRouter();
-  const { user, loading: loadingUser } = useAuthStore(); // useAuthStore dan loading holatini ham oldik
+  const { user, loading: loadingUser } = useAuthStore();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
-  const [resume, setResume] = useState<File | null>(null);
-  const [loading, setLoading] = useState(false); // Formani yuborish uchun loading
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Yangi holat: Komponent client-side da montaj qilinganini tekshirish
   const [isClient, setIsClient] = useState(false);
 
-  // user o‘zgarganda inputlarni avtomatik to‘ldirish
   useEffect(() => {
-    // Komponent client-side da montaj qilinganda isClient ni true ga o'rnatamiz
     setIsClient(true);
     if (user) {
       setFirstName(user.first_name || "");
       setLastName(user.last_name || "");
       setPhone(user.phone || "");
     }
-  }, [user]); // user o'zgarganda ham ishga tushsin
+  }, [user]);
 
-  // 🔹 Agar komponent hali client-side da montaj qilinmagan bo'lsa
-  // yoki foydalanuvchi ma'lumotlari yuklanayotgan bo'lsa
   if (!isClient || loadingUser) {
     return (
       <div className="border dark:border-neutral-700 rounded-xl p-6 bg-muted/30 text-center flex flex-col items-center justify-center h-full min-h-[300px]">
-        {/* Chiroyliroq loader */}
         <div className="flex space-x-2 justify-center items-center">
           <div className="h-4 w-4 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]"></div>
           <div className="h-4 w-4 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]"></div>
           <div className="h-4 w-4 bg-primary rounded-full animate-bounce"></div>
         </div>
         <p className="mt-4 text-lg font-semibold text-gray-700 dark:text-gray-300">
-          {dict.common.loading}... {/* Lug'atdan olingan */}
+          {dict.common.loading}...
         </p>
       </div>
     );
   }
 
-  // 🔹 Agar foydalanuvchi tizimga kirmagan bo‘lsa (faqat isClient true bo'lganda)
   if (!user) {
     return (
       <div className="border dark:border-neutral-700 rounded-xl p-6 bg-muted/30 text-center">
-        <h2 className="text-xl font-semibold mb-2">
-          {dict.vacancies.needAuth}
-        </h2>
-        <p className="text-sm text-muted-foreground">
-          {dict.vacancies.needAuthDesc}
-        </p>
+        <h2 className="text-xl font-semibold mb-2">{dict.vacancies.needAuth}</h2>
+        <p className="text-sm text-muted-foreground">{dict.vacancies.needAuthDesc}</p>
         <Image
           src="/login.png"
           alt="Tizimga kirish kerak"
@@ -79,57 +69,35 @@ export default function ApplyForm({
           className="mx-auto mt-4 w-auto h-auto"
           priority
         />
-
-        {/* Login and Register button */}
         <div className="mt-4 flex justify-center gap-4">
           <Button
             variant="outline"
-            onClick={() => {
-              const loginUrl = `/${locale}/login`;
-              router.push(loginUrl);
-            }}
-            className="cursor-pointer"
+            onClick={() => router.push(`/${locale}/login`)}
           >
-            {dict.auth.login}    
+            {dict.auth.login}
           </Button>
-
-          <Button
-            onClick={() => {
-              const registerUrl = `/${locale}/signup`;
-              router.push(registerUrl);
-            }}
-            className="cursor-pointer"
-          >
-            {dict.auth.register}    
+          <Button onClick={() => router.push(`/${locale}/signup`)}>
+            {dict.auth.register}
           </Button>
         </div>
       </div>
     );
   }
 
-  // 🔹 Agar yuborilgan bo‘lsa
   if (submitted) {
     return (
       <div className="border dark:border-neutral-700 rounded-xl p-6 bg-green-100 dark:bg-green-900/30 text-center">
         <h2 className="text-xl font-semibold mb-2 text-green-700 dark:text-green-300">
           ✅ {dict.vacancies.applySuccess}
         </h2>
-        <p className="text-sm text-muted-foreground">
-          {dict.vacancies.responseSoon}
-        </p>
+        <p className="text-sm text-muted-foreground">{dict.vacancies.responseSoon}</p>
       </div>
     );
   }
 
-  // 🔹 Formani yuborish
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-
-    if (!resume) {
-      setError(dict.vacancies.resumeRequired);
-      return;
-    }
 
     if (!phone) {
       setError(dict.vacancies.phoneRequired);
@@ -147,7 +115,6 @@ export default function ApplyForm({
     formData.append("phone", phone);
     formData.append("email", user.email);
     formData.append("vacancy", String(vacancyId));
-    formData.append("resume", resume);
 
     setLoading(true);
     try {
@@ -166,9 +133,7 @@ export default function ApplyForm({
       onSubmit={handleSubmit}
       className="border dark:border-neutral-700 rounded-xl p-6 space-y-4"
     >
-      <h2 className="text-xl font-medium mb-3">
-        {dict.vacancies.apply_btn}
-      </h2>
+      <h2 className="text-xl font-medium mb-3">{dict.vacancies.apply_btn}</h2>
 
       {error && (
         <div className="text-sm text-red-500 bg-red-50 dark:bg-red-900/20 p-2 rounded">
@@ -187,7 +152,6 @@ export default function ApplyForm({
             disabled={!!user?.first_name}
           />
         </div>
-
         <div className="space-y-2">
           <Label>{dict.vacancies.fullName} (Familiya)</Label>
           <Input
@@ -208,25 +172,33 @@ export default function ApplyForm({
       {/* Phone */}
       <div className="space-y-2">
         <Label>{dict.vacancies.phone}</Label>
-        <Input
+        <PhoneInput
+          country="uz"
           value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          placeholder="+998..."
-          disabled={!!user?.phone} // 🔹 faqat agar user.phone bo‘lsa — disable
+          onChange={(value) => setPhone(value)}
+          disabled={!!user?.phone}
+          containerStyle={{ width: "100%" }}
+          inputStyle={{
+            width: "100%",
+            height: "42px",
+            borderRadius: "8px",
+            border: "1px solid var(--input-border)",
+            backgroundColor: "var(--input-bg)",
+            color: "var(--input-text)",
+            fontSize: "14px",
+            paddingLeft: "48px",
+          }}
+          buttonStyle={{
+            backgroundColor: "var(--input-bg)",
+            border: "1px solid var(--input-border)",
+            borderRadius: "8px 0 0 8px",
+          }}
+          dropdownStyle={{
+            backgroundColor: "var(--input-bg)",
+            color: "var(--input-text)",
+            borderRadius: "8px",
+          }}
         />
-      </div>
-
-      {/* Resume */}
-      <div className="space-y-2">
-        <Label>{dict.vacancies.selectFile}</Label>
-        <Input
-          type="file"
-          accept=".pdf,.doc,.docx"
-          onChange={(e) => setResume(e.target.files?.[0] || null)}
-        />
-        <p className="text-xs text-muted-foreground">
-          {dict.vacancies.fileTypes}
-        </p>
       </div>
 
       {/* Submit */}

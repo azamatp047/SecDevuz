@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 export default function BuyProductForm({
   productId,
@@ -189,13 +191,36 @@ export default function BuyProductForm({
       {/* Phone Number */}
       <div className="space-y-2">
         <Label>{dict.products.phone}</Label>
-        <Input
+
+        <PhoneInput
+          country="uz"
           value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          placeholder="+998..."
+          onChange={(value) => setPhoneNumber(value)}
           disabled={!!user?.phone}
+          containerStyle={{ width: "100%" }}
+          inputStyle={{
+            width: "100%",
+            height: "42px",
+            borderRadius: "8px",
+            border: "1px solid var(--input-border)",
+            backgroundColor: "var(--input-bg)",
+            color: "var(--input-text)",
+            fontSize: "14px",
+            paddingLeft: "48px",
+          }}
+          buttonStyle={{
+            backgroundColor: "var(--input-bg)",
+            border: "1px solid var(--input-border)",
+            borderRadius: "8px 0 0 8px",
+          }}
+          dropdownStyle={{
+            backgroundColor: "var(--input-bg)",
+            color: "var(--input-text)",
+            borderRadius: "8px",
+          }}
         />
       </div>
+
 
       {/* Submit */}
       <Button type="submit" disabled={loading} className="w-full">

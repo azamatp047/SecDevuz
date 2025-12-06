@@ -24,7 +24,7 @@ api.interceptors.response.use(
         if (!refresh) throw new Error("No refresh token");
 
         // Token refresh endpointini to'g'ri belgilaymiz
-        const res = await axios.post(`${BASE_URL}/api/v1/auth/token-refresh/`, { 
+        const res = await axios.post(`${BASE_URL}/v1/auth/token-refresh/`, { 
           refresh,
         });
 

@@ -37,7 +37,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <p className="text-gray-700 dark:text-gray-300">{dict.about.team_desc}</p>
         )}
         <Suspense fallback={<div>Loading team...</div>}>
-          <TeamSection locale={locale} />
+          <TeamSection locale={locale} dict={dict} />
         </Suspense>
       </div>
 
@@ -46,7 +46,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <h2 className="text-2xl font-semibold mb-2">{dict.about.certificates}</h2>
         <p className="text-gray-700 dark:text-gray-300">{dict.about.cert_desc}</p>
         <Suspense fallback={<div>Loading certificates...</div>}>
-          <CertificatesSection />
+          <CertificatesSection dict={dict}/>
         </Suspense>
       </div>
     </div>

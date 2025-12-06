@@ -6,7 +6,7 @@ const ContactForm = dynamic(() => import("./ContactForm"), {
   ssr: false,
   loading: () => (
     <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-xl text-center">
-      <p>Loading contact form...</p>
+      <p>.....</p>
     </div>
   )
 });

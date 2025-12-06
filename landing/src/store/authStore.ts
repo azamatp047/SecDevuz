@@ -25,6 +25,7 @@ interface AuthState {
   signup: (data: { first_name: string; last_name: string; email: string; password: string }) => Promise<void>;
   logout: () => Promise<void>;
   loadUser: () => void;
+  clearError: () => void;
   fetchUserProfile: () => Promise<void>;
 
   // ⭐️ YANGI GOOGLE LOGIN FUNKSIYA
@@ -55,6 +56,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   loading: false,
   error: null,
 
+  clearError: () => set({ error: null }),
+
   login: async (email, password) => {
     set({ loading: true, error: null });
     try {
@@ -70,7 +73,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       await get().fetchUserProfile();
 
     } catch (err: any) {
-      set({ error: err.response?.data?.detail || "Email yoki parol xato!" });
+      set({ error: err.response?.data?.detail });
     } finally {
       set({ loading: false });
     }
@@ -114,9 +117,15 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   logout: async () => {
-    removeLocalStorage("access");
-    removeLocalStorage("refresh");
-    set({ user: null, access: null, refresh: null, isAuthenticated: false });
+
+    try {
+      // await api.post("/api/v1/auth/logout/");
+      removeLocalStorage("access");
+      removeLocalStorage("refresh");
+      set({ user: null, access: null, refresh: null, isAuthenticated: false });
+    } catch (err) {
+      console.error("Logout xatosi:", err);
+    }
   },
 
   loadUser: () => {
